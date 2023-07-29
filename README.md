@@ -1,2 +1,3 @@
 # Python-lattice-thimble
 Simulations of multiple fields on a lattice
+Based on the work in my Ph.D. thesis that used C++ to simulate out of equilibrium quantum fields on a lattice, this project exists to reproduce this in python with connection to AWS and CUDA programming, in addition to testing the viabilty of different ODE solvers compared to RK45. In addtion the data analysis that previously existed as a stand alone file will be integrated into the analysis. Finally, this will also replace the existing use of CSV files for data storage with a more resilient HDF5.
