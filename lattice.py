@@ -8,6 +8,10 @@ class Lattice:
     time_separation = 0
     space_separation = np.array([0, 0, 0])
 
+    def calculate_total_number_of_points(self):
+        """Calculates the number of points in the lattice. Note that it takes into account the reduction due to
+        Mou's formulation"""
+        self.total_number_of_points = (2*self.number_of_time_points - 4)*np.prod(self.number_of_spacial_points)
     @property
     def total_number_of_points(self):
         return self._total_number_of_points
@@ -18,6 +22,10 @@ class Lattice:
             self._total_number_of_points = value
         else:
             self._total_number_of_points = 0
+
+    @property
+    def number_of_time_points(self):
+        return self._number_of_time_points
 
     #really not a big fan of the way I've done this
     def __eq__(self, other):
@@ -39,9 +47,6 @@ class Lattice:
                 json_object = json.load(openfile)
                 self.number_of_time_points = json_object["timePoints"]
                 self.number_of_spacial_points = np.array(json_object["spacePoints"])
-                # Next line takes into account the reduction in the lattice construction by the removal of the first
-                # lattice site and \phi^cl at site 1, and \phi^q at site m
-                self.total_number_of_points = (2*self.number_of_time_points - 4)*np.prod(self.number_of_spacial_points)
                 self.time_separation = json_object["timeSeparation"]
                 self.space_separation = np.array(json_object["spaceSeparation"])
         else:
