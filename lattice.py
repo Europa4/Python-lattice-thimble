@@ -24,10 +24,10 @@ class Lattice:
         if not isinstance(other, Lattice):
             return NotImplemented
         return (self.number_of_time_points == other.number_of_time_points and
-                (self.number_of_spacial_points == other.number_of_spacial_points).all() and
+                np.array(self.number_of_spacial_points == other.number_of_spacial_points).all() and
                 self.total_number_of_points == other.total_number_of_points and
                 self.time_separation == other.time_separation and
-                (self.space_separation == other.space_separation).all())
+                np.array(self.space_separation == other.space_separation).all())
 
     def __init__(self, file_location = None):
         if file_location is None:
