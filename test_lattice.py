@@ -4,9 +4,6 @@ from lattice import Lattice
 
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, True)  # add assertion here
-
 
     def test_blank_save_load(self):
         default_lattice = Lattice()
